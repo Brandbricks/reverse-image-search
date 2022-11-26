@@ -1,4 +1,4 @@
-var url = 'https://www.google.com/searchbyimage?image_url=';
+var url = 'https://www.google.com/searchbyimage?sbisrc=cr_1_5_2&image_url=';
 
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
 
@@ -9,6 +9,8 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 		.then(blob => {
 			const data = new FormData();
 			data.append('encoded_image', blob);
+			data.append('image_url', '');
+			data.append('sbisrc', 'Google Chrome 107.0.5304.107 (Official) Windows');
 
 			fetch('https://www.google.com/searchbyimage/upload', {
 				referrer: '',
